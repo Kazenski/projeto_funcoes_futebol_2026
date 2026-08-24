@@ -17,18 +17,18 @@ def criar_clube():
 
 
 def comprar_jogador(clube, jogador):
-    """Processa a compra validando o saldo."""
+    """Processa a compra validando o saldo e retorna o status da transação."""
     if clube["kaz_coins"] >= jogador["valor"]:
-        # Subtrai o valor da carteira usando atribuição composta
         clube["kaz_coins"] -= jogador["valor"]
-        # Adiciona o jogador ao elenco (Método append em Listas)
         clube["elenco"].append(jogador)
         print(
             f"🎉 CONTRATADO! {jogador['nome']} agora veste a camisa do {clube['nome']}!")
         print(f"💰 Saldo Restante: {clube['kaz_coins']} Kaz Coins.")
+        return True  # A compra foi um sucesso!
     else:
         print(
             f"❌ SALDO INSUFICIENTE! Você precisa de {jogador['valor']} Kaz Coins.")
+        return False  # A compra falhou.
 
 
 def exibir_time(nome_time, lista_jogadores):
