@@ -39,7 +39,7 @@ def iniciar_sistema():
 
                 for i, jog in enumerate(vitrine):
                     print(
-                        f"[{i:02d}] {jog['nome']:<18} | {jog['posicao']:<10} | 🪙 {jog['valor']} KC")
+                        f"[{i:02d}] {jog['nome']:<18} | {jog['posicao']:<10} | 🪙 {jog['valor']}  KC")
 
                 print("\n[ S ] Sair do mercado e ir para a partida")
                 escolha = input(
