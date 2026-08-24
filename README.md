@@ -104,6 +104,33 @@ INSERT INTO jogadores_fifakaz (nome, posicao, valor, atk, def) VALUES
 ('Maldini', 'Zagueiro', 400, 30, 95),
 ('Neuer', 'Goleiro', 300, 10, 90);
 ```
+
+Também temos o código para gerar dados aleatórios na base de dados digital:
+
+```
+-- Gerando 50 jogadores aleatórios puramente com PostgreSQL no Supabase
+INSERT INTO jogadores_fifakaz (nome, posicao, valor, atk, def)
+SELECT 
+    -- 1. Sorteia um nome e concatena (||) com um sobrenome
+    (ARRAY['Kaz', 'Pelé', 'Maradona', 'Zico', 'Messi', 'CR7', 'Neymar', 'Mbappé', 'Haaland', 'Vini Jr'])[floor(random() * 10 + 1)] || ' ' || 
+    (ARRAY['Silva', 'Santos', 'Oliveira', 'Souza', 'Ferreira', 'Lima', 'Gomes'])[floor(random() * 7 + 1)],
+    
+    -- 2. Sorteia a posição
+    (ARRAY['Atacante', 'Meio-Campo', 'Zagueiro', 'Goleiro', 'Lateral'])[floor(random() * 5 + 1)],
+    
+    -- 3. Sorteia Valor (100 a 1000 KC)
+    floor(random() * 900 + 100)::INT,
+    
+    -- 4. Sorteia ATK (10 a 99)
+    floor(random() * 89 + 10)::INT,
+    
+    -- 5. Sorteia DEF (10 a 99)
+    floor(random() * 89 + 10)::INT
+
+-- O "Laço For" do SQL: Geração de 50 séries numéricas
+FROM generate_series(1, 100);
+```
+
 <img width="1843" height="917" alt="image" src="https://github.com/user-attachments/assets/6024d8d2-646c-4145-85f3-e5606bf96207" />
 
 <img width="693" height="894" alt="image" src="https://github.com/user-attachments/assets/913622dd-9efe-4411-86ee-295f22895f54" />
