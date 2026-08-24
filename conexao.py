@@ -12,8 +12,7 @@ SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJ
 
 def conectar_supabase() -> Client:
     try:
-        cliente: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
-        return cliente
+        return create_client(SUPABASE_URL, SUPABASE_KEY)
     except Exception as e:
-        print(f"❌ Erro de conexão tática: {e}")
+        print(f"❌ Erro no VAR (Conexão): {e}")
         return None

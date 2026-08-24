@@ -1,33 +1,20 @@
 # =============================================================================
-# ARQUIVO: funcoes.py
-# OBJETIVO: Regras de negócio, sorteio de jogadas (chances de gol) e narrativa.
+# ARQUIVO: operacoes.py (A Fábrica de Ferramentas)
+# OBJETIVO: Guardar as funções que serão usadas por outros arquivos.
 # =============================================================================
-import random
 
-def tentar_gol(atk_atacante, def_defensor):
+def saudar_usuario(nome):
     """
-    Simula uma jogada de ataque. 
-    Retorna True (Gol) ou False (Defesa/Para fora).
+    Recebe um nome (parâmetro) e retorna uma mensagem de boas-vindas.
     """
-    fator_sorte = random.randint(1, 20)
-    forca_chute = atk_atacante + fator_sorte
-    forca_zaga = def_defensor + 10 # 10 é a dificuldade base do goleiro
-    
-    if fator_sorte == 20:
-        return True, fator_sorte # Golaço indefensável
-    elif fator_sorte == 1:
-        return False, fator_sorte # Isolou a bola
-    elif forca_chute > forca_zaga:
-        return True, fator_sorte
-    else:
-        return False, fator_sorte
+    # O 'return' devolve o valor silenciosamente, ao invés de apenas
+    # exibir na tela como o 'print'. Isso permite guardar o dado depois!
+    return f"Olá, {nome}! Que bom ter você aqui."
 
-def narrar_lance(nome_atacante, gol, sorte):
-    if sorte == 20:
-        return f"⚽ GOLAÇO DE PLACA! {nome_atacante} acerta no ângulo! A torcida vai à loucura!"
-    elif sorte == 1:
-        return f"❌ QUE BIZARRO! {nome_atacante} tropeça na bola e chuta para a lateral."
-    elif gol:
-        return f"⚽ GOOOOOL! Lindo chute de {nome_atacante} que balança as redes!"
-    else:
-        return f"🧤 Defesa espetacular! A zaga bloqueia o ataque de {nome_atacante}."
+
+def somar_valores(a, b):
+    """
+    Recebe dois números (parâmetros), soma-os e retorna o resultado.
+    """
+    resultado = a + b
+    return resultado
