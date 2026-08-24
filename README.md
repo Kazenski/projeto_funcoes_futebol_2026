@@ -108,7 +108,7 @@ INSERT INTO jogadores_fifakaz (nome, posicao, valor, atk, def) VALUES
 Também temos o código para gerar dados aleatórios na base de dados digital:
 
 ```
--- Gerando 50 jogadores aleatórios puramente com PostgreSQL no Supabase
+-- Gerando 100 jogadores aleatórios puramente com PostgreSQL no Supabase
 INSERT INTO jogadores_fifakaz (nome, posicao, valor, atk, def)
 SELECT 
     -- 1. Sorteia um nome e concatena (||) com um sobrenome
