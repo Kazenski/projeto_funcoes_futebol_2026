@@ -7,18 +7,14 @@ Projeto educacional desenvolvido para o ensino de programação orientada a mód
 O código está estruturado de forma modular para demonstrar aos alunos como organizar um projeto do mundo real:
 
 ```
-projeto_futebol/
+projeto_fifakaz/
 │
-├── time/
-│   ├── clube.py          # Gestão do time do usuário e contratação de jogadores
-│   └── logPartida.py     # Narração e exportação da súmula em TXT
+├── mercado/
+│   ├── clube.py          # Gestão do time, carteira de Kaz Coins e compras
+│   └── supabase_db.py    # Comunicação com o banco (Cadastrar e Listar)
 │
-├── tecnico/
-│   └── supabase_tecnico.py # Busca os adversários e jogadores no banco de dados
-│
-├── funcoes.py            # Motor do jogo (cálculo de gols e sorte)
 ├── conexao.py            # Setup do Supabase
-└── main.py               # Game Loop (Os 90 minutos da partida)
+└── main.py               # Menu principal (Modo Jogador vs Modo FifaKaz)
 ```
 
 # Como Executar e Testar
@@ -92,33 +88,21 @@ Agora crie a estrutura da sua base de dados:
 Cole o seguinte código para criar a estrutura das entidades, atributos, seus tipos e esquemas necessários:
 
 ```
--- 1. Tabela de Times Adversários
-CREATE TABLE times_adversarios (
+CREATE TABLE jogadores_fifakaz (
     id SERIAL PRIMARY KEY,
     nome TEXT NOT NULL,
+    posicao TEXT NOT NULL,
+    valor INT NOT NULL, -- Preço em Kaz Coins
     atk INT NOT NULL,
     def INT NOT NULL
 );
 
--- 2. Tabela de Jogadores de Destaque (Substitui os "Equipamentos")
-CREATE TABLE jogadores (
-    id SERIAL PRIMARY KEY,
-    nome TEXT NOT NULL,
-    posicao TEXT NOT NULL,
-    bonus_atk INT DEFAULT 0,
-    bonus_def INT DEFAULT 0
-);
-
--- 3. Inserindo dados iniciais
-INSERT INTO times_adversarios (nome, atk, def) VALUES 
-('Boca Juniors', 15, 12),
-('Real Madrid', 25, 20),
-('Manchester City', 28, 18);
-
-INSERT INTO jogadores (nome, posicao, bonus_atk, bonus_def) VALUES 
-('Lionel Messi', 'Atacante', 10, 0),
-('Virgil van Dijk', 'Zagueiro', 0, 10),
-('N Golo Kanté', 'Meio-Campo', 4, 6);
+-- Inserindo alguns craques iniciais para a loja não começar vazia
+INSERT INTO jogadores_fifakaz (nome, posicao, valor, atk, def) VALUES 
+('Kazenski', 'Atacante', 500, 95, 40),
+('Pelé', 'Meio-Campo', 900, 99, 50),
+('Maldini', 'Zagueiro', 400, 30, 95),
+('Neuer', 'Goleiro', 300, 10, 90);
 ```
 <img width="1843" height="917" alt="image" src="https://github.com/user-attachments/assets/6024d8d2-646c-4145-85f3-e5606bf96207" />
 
